@@ -33,3 +33,24 @@ target_link_libraries(opencv-web simplelogger)
 ```aiignore
 #include <simplelogger/simplelogger.hpp>
 ```
+## inspect a dylib on mac
+```aiignore
+developer@Mac cmake-build-debug % nm -l libsimplelogger.dylib 
+0000000000001030 T __ZN4haru12SimpleLogger12getTimestampEv
+00000000000010f8 T __ZN4haru12SimpleLogger3addEii
+0000000000001140 T __ZN4haru12SimpleLogger6recordENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEEi
+00000000000011d4 t __ZNSt3__111char_traitsIcE6lengthB8ne200100EPKc
+                 U __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEPKcm
+00000000000010c4 t __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC1B8ne200100ILi0EEEPKc
+0000000000001158 t __ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEEC2B8ne200100ILi0EEEPKc
+0000000000001224 t __ZNSt3__116__non_trivial_ifILb1ENS_9allocatorIcEEEC2B8ne200100Ev
+0000000000001238 t __ZNSt3__118__constexpr_strlenB8ne200100IcEEmPKT_
+00000000000011a8 t __ZNSt3__19allocatorIcEC1B8ne200100Ev
+00000000000011f8 t __ZNSt3__19allocatorIcEC2B8ne200100Ev
+                 U ___stack_chk_fail
+                 U ___stack_chk_guard
+                 U _localtime
+                 U _strftime
+                 U _strlen
+                 U _time
+```

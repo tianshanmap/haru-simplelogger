@@ -10,9 +10,6 @@ namespace haru {
     int SimpleLogger::add(int a, int b) {
         return a + b;
     }
-    int SimpleLogger::fuck(int a, int b) {
-        return a + b;
-    }
     void SimpleLogger::record(std::string a, int b) {
     }
 

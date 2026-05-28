@@ -105,7 +105,6 @@ namespace haru {
             log(ERROR, std::forward<Args>(args)...);
         }
         int add(int a, int b);
-        int fuck(int a, int b);
         void record(std::string xzy,int x);
     };
 }
