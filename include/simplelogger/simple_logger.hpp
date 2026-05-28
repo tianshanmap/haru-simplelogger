@@ -66,6 +66,7 @@ namespace haru {
         void warning(Args... args);
         template <typename... Args>
         void error(Args... args);
+        int add(int a, int b);
     };
 }
 #endif //HARU_OPENCV_WEB_SIMPLE_LOGGER_H

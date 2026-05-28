@@ -8,8 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Define the library
 add_library(simplelogger SHARED
-    src/simplelogger.cpp
-    src/simple_logger.cpp
+        src/simple_logger.cpp
 )
 
 # Target include directories (Public for users, Private for internal source)

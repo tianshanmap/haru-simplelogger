@@ -55,4 +55,8 @@ namespace haru {
     void SimpleLogger::error(Args... args) {
         log(ERROR, std::forward<Args>(args)...);
     }
+    int SimpleLogger::add(int a, int b) {
+        return a + b;
+    }
+
 }
