@@ -57,16 +57,56 @@ namespace haru {
 
         // The main logging function
         template <typename... Args>
-        void log(LogLevel level, Args... args);
+        void log(LogLevel level, Args... args) {
+            if (level < minimumLevel) return; // Filter out lower severity logs
+
+            // std::source_location location = std::source_location::current();
+            // std::string filename = std::filesystem::path(location.file_name()).filename().string();
+            // std::string logEntry = "[" + getTimestamp() +
+            //                        "] [" + levelToString(level) + "] " +
+            //                        "[" + filename + ":" + std::to_string(location.line()) + "] ";
+            std::string logEntry = "[" + getTimestamp() +
+                                   "] [" + levelToString(level) + "] ";
+
+            // Print to console
+            std::cout << logEntry;
+            ([&](const auto& item) {
+                std::cout << item << ',';
+            }(args), ...);
+            std::cout << std::endl;
+            // (std::cout << ... << args) << std::endl;
+            // std::cout <<  message << std::endl;
+
+            // Save to file
+            if (logFile.is_open()) {
+                logFile << logEntry;
+                ([&](const auto& item) {
+                    logFile << item << ',';
+                }(args), ...);
+                logFile << std::endl;
+                // logFile << message << std::endl;
+            }
+        }
+
         template <typename... Args>
-        void debug(Args... args);
+        void debug(Args... args) {
+            log(DEBUG, std::forward<Args>(args)...);
+        }
         template <typename... Args>
-        void info(Args... args);
+        void info(Args... args) {
+            log(INFO, std::forward<Args>(args)...);
+        }
         template <typename... Args>
-        void warning(Args... args);
+        void warning(Args... args) {
+            log(WARNING, std::forward<Args>(args)...);
+        }
         template <typename... Args>
-        void error(Args... args);
+        void error(Args... args) {
+            log(ERROR, std::forward<Args>(args)...);
+        }
         int add(int a, int b);
+        int fuck(int a, int b);
+        void record(std::string xzy,int x);
     };
 }
 #endif //HARU_OPENCV_WEB_SIMPLE_LOGGER_H
